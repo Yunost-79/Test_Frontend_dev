@@ -1,0 +1,342 @@
+* ==================== nullstyle ==================== */ * {
+  box-sizing: border-box;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+html {
+  height: 100%;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ==================== END : nullstyle ==================== */
+
+/* ==================== add global font ==================== */
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* ==================== container styles ==================== */
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #161616;
+  color: #fff;
+}
+
+.container__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.container__title {
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.main {
+  margin-top: 60px;
+  width: 80%;
+}
+
+.header-main {
+  display: flex;
+  gap: 20px;
+}
+
+.header-main__item {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  flex: 1 1 13%;
+  font-size: 20px;
+}
+
+.header-main__item::after {
+  position: absolute;
+  content: '';
+  left: 50%;
+  bottom: -5px;
+  transform: translate(-50%);
+  width: 60%;
+  height: 2px;
+  background-color: #ffb039;
+}
+
+.header-main__item:first-of-type {
+  flex: 1 1 4%;
+}
+
+.header-main__item:nth-child(3) {
+  flex: 1 1 30%;
+}
+
+.header-main__item:last-of-type {
+  flex: 1 1 40%;
+}
+
+.header-main__item:last-of-type::after {
+  content: none;
+}
+
+/* ==================== table styles ==================== */
+
+.table {
+  margin-top: 30px;
+}
+
+.table-main {
+  display: flex;
+  gap: 20px;
+}
+
+.table-main__item {
+  flex: 1 1 13%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.table-main__item:first-of-type {
+  flex: 1 1 4%;
+}
+
+.table-main__item:nth-child(3) {
+  flex: 1 1 30%;
+}
+
+.table-main__item:last-of-type {
+  flex: 1 1 40%;
+}
+
+.button-group {
+  display: flex;
+  gap: 20px;
+  width: 80%;
+}
+
+.button-group__button {
+  padding: 8px 0;
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid #ffb039;
+  outline: none;
+  background-color: rgba(255, 176, 57, 0);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+
+.button-group__button:hover {
+  background-color: rgba(255, 176, 57, 1);
+  color: #161616;
+}
+
+.common__input {
+  width: 100%;
+  padding: 8px 0 8px 8px;
+  border-radius: 5px;
+  background-color: #16161600;
+  color: #fff;
+  outline: none;
+  border: 1px solid rgba(255, 176, 57, 0.4);
+  transition: 0.2s linear;
+}
+
+.change_input:focus {
+  border: 1px solid rgba(255, 176, 57, 1);
+}
+
+.change_input::placeholder {
+  color: #ccc;
+  transition: 0.2s linear;
+}
+
+.change_input:focus::placeholder {
+  color: #fff;
+}
+
+.change_input.error {
+  border: 1px solid #d0342c;
+}
+
+/* ==================== add styles ==================== */
+
+.add-main {
+  display: flex;
+
+  gap: 20px;
+  width: 100%;
+}
+.add-main__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  flex: 1 1 13%;
+}
+.add-main__item:first-of-type {
+  flex: 1 1 4%;
+}
+
+.add-main__item:nth-child(3) {
+  flex: 1 1 30%;
+}
+
+.add-main__item:last-of-type {
+  flex: 1 1 40%;
+}
+
+.add-main_input {
+  width: 100%;
+}
+.table-main__input.error {
+  border: 1px solid #d0342c;
+}
+
+/* ==================== empty styles ==================== */
+
+.table-main-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40vh;
+}
+
+.table-main-empty__title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.add-main_input.error{
+  border: 1px solid #d0342c;
+
+}

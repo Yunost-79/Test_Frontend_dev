@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container__wrapper">
+        <h1 class="container__title">JS Table Test</h1>
+        <div class="main" id="main">
+          <ul class="header-main">
+            <li class="header-main__item">id</li>
+            <li class="header-main__item">name</li>
+            <li class="header-main__item">email</li>
+            <li class="header-main__item">age</li>
+            <li class="header-main__item"></li>
+          </ul>
+
+          <!-- =============== Render table =============== -->
+          <div class="table" id="table"></div>
+          <!-- =============== END : Render table =============== -->
+
+          <div class="add-main">
+            <div class="add-main__item"></div>
+            <div class="add-main__item">
+              <input type="text" id="input_name" class="add-main_input common__input" placeholder="name" />
+            </div>
+            <div class="add-main__item">
+              <input type="text" id="input_email" class="add-main_input common__input" placeholder="email" />
+            </div>
+            <div class="add-main__item">
+              <input type="number" id="input_age" class="add-main_input common__input" placeholder="age" />
+            </div>
+            <div class="add-main__item button-group">
+              <button class="add-main__button button-group__button" onclick="addUser()">Add</button>
+              <button class="add-main__button button-group__button" onclick="deleteAllUsers()">Delete All</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
