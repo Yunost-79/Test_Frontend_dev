@@ -8,19 +8,29 @@ let users = [
 
 // ================== END : data ==================
 
+// ================== Additional Funcs ==================
+
+const checkEmail = (email) => {
+  const re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};
+// ================== END : Additional Funcs ==================
+
 const table = document.querySelector('#table');
+const helperText = document.querySelector('.helper-text');
 
 // ================== Render Table ==================
 const renderTable = () => {
   table.innerHTML = '';
-  const empty = document.createElement('div');
+  const emptyElement = document.createElement('div');
   if (!users.length) {
-    empty.innerHTML = `
+    emptyElement.innerHTML = `
     <div class="table-main-empty">
       <h3 class="table-main-empty__title">Table is empty</h3>
     </div>
   `;
-    table.appendChild(empty);
+    table.appendChild(emptyElement);
     return;
   }
 
@@ -77,28 +87,27 @@ const renderTable = () => {
 // ================== Add a user in table ==================
 
 const addUser = () => {
-  const id = users.length + 1;
-  let name = document.querySelector('#input_name').value;
-  let email = document.querySelector('#input_email').value;
-  let age = document.querySelector('#input_age').value;
-
   const inputsAdd = document.querySelectorAll('.add-main_input');
+  const id = users.length + 1;
+  let name = document.querySelector('#input_name');
+  let email = document.querySelector('#input_email');
+  let age = document.querySelector('#input_age');
 
-  const newUser = { id, name, email, age };
-
-  if (name == '' || email == '' || age == '') {
+  if (name.value === '' || email.value === '' || age.value === '' || !checkEmail(email.value)) {
     inputsAdd.forEach((input) => input.classList.add('error'));
-
-    console.log('err');
+    helperText.style.display = 'flex';
     return;
   }
   inputsAdd.forEach((input) => input.classList.remove('error'));
+  helperText.style.display = 'none';
+
+  const newUser = { id, name: name.value, email: email.value, age: age.value };
 
   users.push(newUser);
 
-  document.querySelector('#input_name').value = '';
-  document.querySelector('#input_email').value = '';
-  document.querySelector('#input_age').value = '';
+  name.value = '';
+  email.value = '';
+  age.value = '';
 
   renderTable();
 };
@@ -117,34 +126,35 @@ const startEditing = (id) => {
 };
 
 const confirmEdit = (id) => {
-  let name = document.querySelector('#change_input_name').value;
-  let email = document.querySelector('#change_input_email').value;
-  let age = document.querySelector('#change_input_age').value;
+  let name = document.querySelector('#change_input_name');
+  let email = document.querySelector('#change_input_email');
+  let age = document.querySelector('#change_input_age');
   const inputsEdit = document.querySelectorAll('.table-main__input');
 
-  if (name === '' || email === '' || age === '') {
+  if (name.value === '' || email.value === '' || age.value === '' || !checkEmail(email.value)) {
     users.forEach((user) => {
       if (user.id === id) {
         inputsEdit.forEach((input) => input.classList.add('error'));
+        helperText.style.display = 'flex';
       }
     });
     return;
   }
 
   inputsEdit.forEach((input) => input.classList.remove('error'));
-
+  helperText.style.display = 'none';
 
   users = users.map((user) => {
     if (user.id === id) {
-      return { ...user, name, email, age, isEdit: false };
+      return { ...user, name: name.value, email: email.value, age: age.value, isEdit: false };
     }
 
     return user;
   });
 
-  name = '';
+  name.value = '';
   email.value = '';
-  age = '';
+  age.value = '';
 
   renderTable();
 };
@@ -174,3 +184,4 @@ const deleteAllUsers = () => {
 // ================== END : Removing all users from a table ==================
 
 renderTable();
+renderHelperText();
