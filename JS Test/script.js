@@ -19,6 +19,9 @@ const checkEmail = (email) => {
 
 const table = document.querySelector('#table');
 const helperText = document.querySelector('.helper-text');
+const headerItem = document.querySelectorAll('.header-main__item');
+let sortOrder = -1;
+let sortHeaderColumn = 'id';
 
 // ================== Render Table ==================
 const renderTable = () => {
@@ -183,5 +186,31 @@ const deleteAllUsers = () => {
 
 // ================== END : Removing all users from a table ==================
 
+// ================== Sort table ==================
+
+const startSorting = () => {
+  const headerNameItem = document.querySelectorAll('.header-main__item');
+  headerNameItem.forEach((item) => {
+    item.addEventListener('click', () => {
+      const columnName = item.getAttribute('id');
+      sortTable(columnName, true);
+    });
+  });
+};
+
+const sortTable = (column, order) => {
+  users.sort((a, b) => {
+    if (order) {
+      return a[column] > b[column] ? 1 : -1;
+    } else {
+      return a[column] < b[column] ? 1 : -1;
+    }
+  });
+  renderTable();
+};
+
+// ================== END : Sort table  ==================
+
+startSorting();
 renderTable();
 renderHelperText();

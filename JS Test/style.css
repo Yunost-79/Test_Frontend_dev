@@ -173,6 +173,12 @@ body {
   width: 100%;
   flex: 1 1 13%;
   font-size: 20px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+
+.header-main__item:hover {
+  color: #ffb039;
 }
 
 .header-main__item::after {
